@@ -13,7 +13,7 @@ MOSFET::MOSFET(string Mname, string drain, string gate, string source)
     _source = source;
 }
 
-bool MOSFET::calculate(string input)
+string MOSFET::calculate(string input)
 {
 
 // loop on characters
@@ -27,10 +27,6 @@ bool MOSFET::calculate(string input)
     // always vdd NET representing positive terminal of DC
 }
 
-string MOSFET::SPICE_output()
-{
-    // return string
-}
 
 void MOSFET::printout()
 {

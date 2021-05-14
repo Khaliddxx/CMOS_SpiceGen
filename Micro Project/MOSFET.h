@@ -13,7 +13,7 @@ public:
     
     
     bool checkInput();
-    string calculate();
+    string calculate(string input);
 
     void printout();
 
@@ -22,7 +22,7 @@ private:
 
     string _Mname;
     string _drain;
-    string _gate
+    string _gate;
     string _source;
     enum bodyType {PMOS, NMOS};
 
