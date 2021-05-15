@@ -13,19 +13,19 @@ MOSFET::MOSFET(string Mname, string drain, string gate, string source)
     _source = source;
 }
 
-string MOSFET::calculate(string input)
-{
+//string MOSFET::calculate(string input)
+// {
 
-// loop on characters
+// // loop on characters
     
-    // spaces not allowed => error handling
+//     // spaces not allowed => error handling
     
-    // paranthesis not allowed (except with bonus)
+//     // paranthesis not allowed (except with bonus)
     
-    // single output symbol (except in bonus)
+//     // single output symbol (except in bonus)
     
-    // always vdd NET representing positive terminal of DC
-}
+//     // always vdd NET representing positive terminal of DC
+// }
 
 
 void MOSFET::printout()

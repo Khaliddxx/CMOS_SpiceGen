@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <vector>
+#include <stack>
 using namespace std;
 
 
@@ -11,9 +13,9 @@ public:
     // init
     MOSFET(string Mname, string drain, string gate, string source);
     
-    
-    bool checkInput();
-    string calculate(string input);
+    bool check_priority(char& operator1, char& operator2);
+    vector <string> calculate_priority(string& input_exp);
+    // string calculate(string input);
 
     void printout();
 
