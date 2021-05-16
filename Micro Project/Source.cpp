@@ -1,40 +1,13 @@
-#include<iostream>
+#include <iostream>
 #include <vector>
+#include <stack>
+#include <string>
+#include <sstream>
 using namespace std;
 
 
-class MOSFET
-{
-public:
-
-    // init
-    MOSFET(string Mname, string drain, string gate, string source)
-    {
-        _Mname = Mname;
-        _drain = drain;
-        _gate = gate;
-        _source = source;
-    }
-    MOSFET(){}
-    
-    // bool check_priority(char& operator1, char& operator2);
-    // vector <string> calculate_priority(string& input_exp);
-    // string calculate(string input);
-
-    void printout()
-    {
-    cout << _Mname << _drain << _gate << _source << endl;
-    }
-
-
-private:
-
-    string _Mname;
-    string _drain;
-    string _gate;
-    string _source;
-    enum bodyType {PMOS, NMOS};
-
+struct CMOS {
+	string Mname, drain, gate, source, type;
 };
 
 // Assuming 2 input gates
@@ -131,24 +104,69 @@ vector<char> divideExpression(vector<string> eq)
     
 }
 
-vector<MOSFET> generateNetlist(vector<char> eq)
+
+
+void generateNetlist(vector<char> exp, vector<CMOS> types, string label)
 {
-    vector<MOSFET> M;
-    MOSFET temp;
+    //vector<MOSFET> M;
+    CMOS temp;
+	CMOS temp2;
+	
+
+	vector<CMOS> output;
+
     int count = 0;
 
-    for (int i=0; i<eq.size(); i++)
-    {
-        switch (eq[i])
-        {
-            case '`':
-            temp._gate = eq[i-1];
+	
+    
+	for (int j=0; j<exp.size(); j++)
+	{
+		if (types[count].type == "PMOS")
+			switch (exp[j])
+			{
+				// x = b`a`|c&
+				case '`':
+				temp.gate = exp[j-1];
+				temp.source = "vdd";
+				temp.drain = label;
 
-            case '&':
-            
+				output.push_back(temp);
+				break;
 
-            default: count++;
-        }
+				case '&':
+				//temp.gate 
+				temp.source = "vdd";
+				temp.drain = "1";
+				temp.type = "PMOS";
+				output.push_back(temp);
+				
+				//temp2.gate
+				temp2.source = "1";
+				temp2.drain = label;
+				temp2.type = "PMOS";
+				output.push_back(temp2);
+
+				break;
+
+				case '|':
+				//temp.gate = 
+				temp.source = "vdd";
+				temp.drain = label;
+				temp.type = "PMOS";
+				output.push_back(temp);
+
+				// temp2.gate = 
+				temp2.source = "vdd";
+				temp2.drain = label;
+				temp2.type = "PMOS";
+				output.push_back(temp2);
+
+
+
+
+				default: count++;
+		}
+        
     }
 }
 
