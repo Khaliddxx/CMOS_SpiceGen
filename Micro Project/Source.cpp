@@ -111,13 +111,9 @@ void generateNetlist(vector<char> exp, vector<CMOS> types, string label)
     //vector<MOSFET> M;
     CMOS temp;
 	CMOS temp2;
-	
 
 	vector<CMOS> output;
-
     int count = 0;
-
-	
     
 	for (int j=0; j<exp.size(); j++)
 	{
