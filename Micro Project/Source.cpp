@@ -10,8 +10,6 @@ struct CMOS {
 	string Mname, drain, gate, source, type;
 };
 
-// Assuming 2 input gates
-
 
 bool check_priority(char& operator1, char& operator2)
 {
